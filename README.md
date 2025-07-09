@@ -41,11 +41,6 @@ A comprehensive full-stack web application for cybersecurity threat monitoring, 
 
 ### Step 1: Download the Kaggle Dataset
 
-1. Visit: https://www.kaggle.com/datasets/hussainsheikh03/nlp-based-cyber-security-dataset
-2. Download the `nlp_based_cyber_security_dataset.csv` file
-3. Create a `data/` directory in your project root
-4. Place the CSV file in the `data/` directory
-
 ### Step 2: Verify Dataset Structure
 
 The CSV should have these columns:
