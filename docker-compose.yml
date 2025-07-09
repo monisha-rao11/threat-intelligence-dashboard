@@ -1,0 +1,63 @@
+version: '3.8'
+
+services:
+  # Database service
+  database:
+    image: mysql:8.0
+    container_name: threat_intelligence_db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: threat_intelligence
+      MYSQL_USER: threat_user
+      MYSQL_PASSWORD: threat_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./scripts/create-database.sql:/docker-entrypoint-initdb.d/create-database.sql
+    networks:
+      - threat_network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+  # Web application service
+  web:
+    build: .
+    container_name: threat_intelligence_web
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - DB_HOST=database
+      - DB_USER=threat_user
+      - DB_PASSWORD=threat_password
+      - DB_NAME=threat_intelligence
+    depends_on:
+      database:
+        condition: service_healthy
+    networks:
+      - threat_network
+    volumes:
+      - ./data:/app/data:ro  # Mount data directory as read-only
+
+  # Redis for caching (optional)
+  redis:
+    image: redis:7-alpine
+    container_name: threat_intelligence_redis
+    ports:
+      - "6379:6379"
+    networks:
+      - threat_network
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+
+volumes:
+  mysql_data:
+  redis_data:
+
+networks:
+  threat_network:
+    driver: bridge
