@@ -93,7 +93,7 @@ The CSV should have these columns:
 3. **Set up the dataset**
    \`\`\`bash
    mkdir data
-   # Place nlp_based_cyber_security_dataset.csv in the data/ directory
+
    \`\`\`
 
 4. **Start the development server**
@@ -109,7 +109,6 @@ The CSV should have these columns:
 1. **Prepare the dataset**
    \`\`\`bash
    mkdir data
-   # Place nlp_based_cyber_security_dataset.csv in the data/ directory
    \`\`\`
 
 2. **Start with Docker**
@@ -240,17 +239,7 @@ This application uses the "NLP Based Cyber Security Dataset" from Kaggle:
 - **License**: Please check Kaggle for dataset licensing terms
 - **Citation**: Please cite the original dataset authors when using this application
 
-## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
@@ -260,11 +249,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **shadcn/ui**: For the beautiful component library
 - **Next.js Team**: For the excellent React framework
 
-## 📞 Support
-
-For questions or support regarding this assignment:
-- Email: arpithac@connectsecure.com
-- Assignment Form: https://forms.gle/cPNKLMC3FE67c6uU9
 
 ---
 
